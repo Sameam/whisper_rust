@@ -6,6 +6,16 @@ A high-performance, real-time speech recognition service built in Rust that prov
 
 This service combines OpenAI's Whisper model for speech transcription with Silero VAD for voice activity detection, offering a complete solution for real-time audio processing applications. Built with Actix-web and optimized for low-latency streaming scenarios.
 
+## ⚠️ Research Project Status
+
+**This is currently a research and development project.** While the service is functional and demonstrates real-time speech recognition capabilities, it should be considered experimental and not production-ready. The project is actively being developed and tested, with ongoing improvements to audio processing algorithms and transcription quality.
+
+**Key considerations:**
+- Audio format support is still being optimized
+- Transcription quality varies significantly across different audio formats
+- API and configuration may change as the project evolves
+- Contributions, feedback, and testing are welcome and encouraged
+
 ## Features
 
 ### 🎙️ Speech-to-Text (STT)
@@ -167,10 +177,26 @@ STTConfig {
 - **SIMD optimization**: Hardware-accelerated audio processing
 - **Memory efficient**: Streaming processing with bounded buffers
 
+## Future Maintenance & Improvements
+
+### Audio Format Optimization
+- **Transcription Quality**: While the service supports multiple audio formats, transcription quality may vary significantly compared to the optimal PCM16 format at 16kHz sample rate. Non-PCM formats (μ-law, A-law) especially may produce suboptimal results and require algorithm improvements.
+- **Format Support Enhancement**: Currently, the service only supports raw byte streams for multiple sample rates and audio formats. Future versions should consider:
+  - Support for containerized audio formats (WAV, FLAC, etc.)
+  - Improved codec support for compressed formats
+  - Better audio preprocessing for non-standard formats
+
+### Planned Improvements
+- Enhanced audio normalization algorithms for telephony formats
+- Advanced noise reduction preprocessing
+- Support for additional audio containers and codecs
+- Improved sample rate conversion algorithms
+- Better handling of audio artifacts in compressed formats
+
 ## Use Cases
 
 - **Real-time voice applications** (voice assistants, transcription services)
-- **Telephony integration** (supports telephony formats like μ-law/A-law)
+- **Audio compress format integration** (supports formats like μ-law/A-law)
 - **Streaming audio processing** with low latency requirements
 - **Multi-tenant applications** with session isolation
 - **Voice-controlled interfaces** requiring reliable speech detection
