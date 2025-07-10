@@ -118,30 +118,6 @@ STTConfig {
 }
 ```
 
-## Usage Examples
-
-### JavaScript WebSocket Client
-
-```javascript
-const ws = new WebSocket('ws://localhost:8080/stt');
-
-ws.onopen = () => {
-    console.log('Connected to STT service');
-};
-
-ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    if (data.event === 'stt_result') {
-        console.log('Transcription:', data.transcription);
-    }
-};
-
-// Send audio data
-function sendAudio(audioBuffer) {
-    ws.send(audioBuffer);
-}
-```
-
 ### Response Format
 
 #### STT Results
